@@ -1,0 +1,6 @@
+.*
+!/.gitignore
+
+local/
+pennylane/
+venv/
