@@ -50,7 +50,9 @@
 	$ pip install -e .
 	```
 
-### Running the Docker images
+### Running the QVM
+
+#### Using Docker images
 
 1. Install Docker
 2. Make sure no service is running on ports 5000 and 5555
@@ -63,4 +65,27 @@
 
 	`$ docker run --rm -it -p 5555:5555 rigetti/quilc -R`
 4. Otherwise, to run them in the background, add `-d` to both the previous commands
+
+Note: The `qvm` process can crash due to memory issues; if that happens, try to run it with `--default-allocation foreign`. Performance can also improve by adding the `-c` (JIT compilation of Quil programs) parameter.
+
+#### Building from the source
+
+1. Clone the QVM repository:
+
+	`$ git clone https://github.com/rigetti/qvm`
+
+2. Install the needed libraries, for instance on Ubuntu:
+
+	```
+	$ cd qvm/
+	$ sudo apt-get install make pkg-config libffi-dev libblas-dev liblapack-dev sbcl
+	```
+
+3. Build it with `make`, optionally with a parameter for the memory:
+
+	`$ make QVM_WORKSPACE=32768 qvm`
+
+3. Run `qvm`:
+
+	`$ ./qvm -S -c`
 
