@@ -1,5 +1,7 @@
 # notebook-qc
 
+# Running the notebook
+
 1. Create a virtual environment: 
 
 	`$ python3 -m venv venv`
@@ -33,7 +35,22 @@
 
 8. Open and run `Notebook.ipynb`
 
-### Running the pyQuil/Forest SDK examples
+## Running the pyQuil/Forest SDK examples
+
+### Installing pennylane-forest
+
+1. Clone the PennyLane Forest plugin:
+
+	`$ git clone https://github.com/rigetti/pennylane-forest`
+
+2. Build the plugin locally:
+
+	```
+	$ cd pennylane-forest
+	$ pip install -e .
+	```
+
+### Running the Docker images
 
 1. Install Docker
 2. Make sure no service is running on ports 5000 and 5555
