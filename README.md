@@ -30,7 +30,7 @@
 	$ git clone https://github.com/XanaduAI/pennylane
 	```
 
-	1. _(Only necessary if running the pyQuil/Forest SDK examples)_ Checkout the `1a882984c8f5bc3ce13b74f8f395ce9262c0a975` commit (because of a bug with wires that would prevent the `pennylane-forest` plugin from running):
+	1. _(Only necessary if running the pyQuil/Forest SDK examples)_ Checkout the `1a882984c8f5bc3ce13b74f8f395ce9262c0a975` commit (because of [a bug](https://github.com/rigetti/pennylane-forest/issues/52) with wires that would prevent the `pennylane-forest` plugin from running):
 
 		```
 		$ git checkout 1a882984c8f5bc3ce13b74f8f395ce9262c0a975
