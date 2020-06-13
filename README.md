@@ -8,7 +8,7 @@ In this notebook we will create and optimize a quantum circuit to prepare a [Bel
 - train the circuit parameters towards a target state;
 - visualize the parameters' evolution through the training steps.
 
-I will use [PennyLane](https://pennylane.ai/), a Python library for quantum machine learning, highlighting my contributions.
+We will use [PennyLane](https://pennylane.ai/), a Python library for quantum machine learning. I will also highlight my contributions to the library.
 
 ## Running the notebook
 
