@@ -1,6 +1,6 @@
-# Bell state preparation with circuit optimization
+# Optimization of a quantum circuit to prepare a Bell state
 
-In this notebook we will create and optimize a quantum circuit to prepare a [Bell state](https://en.wikipedia.org/wiki/Bell_state), the simplest two-qubit example of quantum entanglement. Step by step, we will see how to:
+In this notebook I will show how to create and optimize a quantum circuit to prepare a [Bell state](https://en.wikipedia.org/wiki/Bell_state), the simplest two-qubit example of quantum entanglement. Step by step, we will see how to:
 
 - create a quantum circuit with trainable parameters;
 - define a quantum device;
@@ -8,7 +8,7 @@ In this notebook we will create and optimize a quantum circuit to prepare a [Bel
 - train the circuit parameters towards a target state;
 - visualize the parameters' evolution through the training steps.
 
-We will use [PennyLane](https://pennylane.ai/), a Python library for quantum machine learning. I will also highlight my contributions to the library.
+I will use [PennyLane](https://pennylane.ai/), a Python library for quantum machine learning, throughout the notebook. I will also highlight my contributions to the library.
 
 ## Running the notebook
 
@@ -36,13 +36,13 @@ We will use [PennyLane](https://pennylane.ai/), a Python library for quantum mac
 	$ pip install -r requirements.txt
 	```
 
-5. Clone PennyLane:
+5. Clone PennyLane (since at this moment my contribution are only present on the master version):
 
 	```
 	$ git clone https://github.com/XanaduAI/pennylane
 	```
 
-	1. _(Only necessary if running the pyQuil/Forest SDK examples)_ Checkout the `1a882984c8f5bc3ce13b74f8f395ce9262c0a975` commit (because of [a bug](https://github.com/rigetti/pennylane-forest/issues/52) with wires that would prevent the `pennylane-forest` plugin from running):
+	1. _(Only necessary if running the pyQuil/Forest SDK examples)_ Checkout the `1a882984c8f5bc3ce13b74f8f395ce9262c0a975` commit (because of [a bug I found](https://github.com/rigetti/pennylane-forest/issues/52) with wires that would prevent the `pennylane-forest` plugin from running):
 
 		```
 		$ git checkout 1a882984c8f5bc3ce13b74f8f395ce9262c0a975
@@ -65,6 +65,8 @@ We will use [PennyLane](https://pennylane.ai/), a Python library for quantum mac
 
 ## Running the pyQuil/Forest SDK examples
 
+This is only necessary when running the notebook with Rigetti QVM (the `forest.qvm` device) and QPU (the `forest.qpu` device). The two devices are included but commented out in the notebook.
+
 ### Installing pennylane-forest
 
 1. Clone the PennyLane Forest plugin:
@@ -73,18 +75,18 @@ We will use [PennyLane](https://pennylane.ai/), a Python library for quantum mac
 	$ git clone https://github.com/rigetti/pennylane-forest
 	```
 
-2. Build the plugin locally:
+2. Build the plugin locally (since the new Aspen-8 device is only present on the master version):
 
 	```
 	$ cd pennylane-forest
 	$ pip install -e .
 	```
 
-### Running qvm and quilc
+### Running `qvm` and `quilc`
+
+The plugin requires both the quantum virtual machine (`qvm`) and the Quil compiler (`quilc`) to be running. The easiest way to run both is by using Docker images; on the other hand, if the configuration of the QVM needs to be customized (for instance to assign more memory to the process), it is necessary to build it from the source.
 
 #### Using Docker images
-
-The easiest way is to run both `qvm` and `quilc` as Docker images.
 
 1. Install Docker
 
@@ -110,8 +112,6 @@ Note: The `qvm` process can crash due to memory issues; if that happens, try to 
 
 #### Building QVM from the source
 
-The QVM can also be built from the source.
-
 1. Clone the QVM repository:
 
 	```
@@ -125,14 +125,14 @@ The QVM can also be built from the source.
 	$ sudo apt-get install make pkg-config libffi-dev libblas-dev liblapack-dev sbcl
 	```
 
-3. Build QVM with `make`, optionally with a parameter for the memory:
+3. Build with `make`, optionally with a parameter for the memory:
 
 	```
 	$ cd qvm/
 	$ make QVM_WORKSPACE=24576 qvm
 	```
 
-3. Run `qvm`:
+3. Run `qvm` (the `-c` parameter, which enables Quil programs JIT compilation, is optional but seems to improve the response speed):
 
 	```
 	$ ./qvm -S -c`
@@ -144,5 +144,5 @@ Big thanks go to:
 
 - [Tom Bromley](https://github.com/trbromley) (Xanadu), for all the interesting discussions about PennyLane extensions, for guiding me through conventions and existing work, and for reviewing my code and notebook;
 - [Josh Izaac](https://github.com/josh146) (Xanadu), for putting me in touch with the PennyLane team, giving many useful suggestions, and for reviewing my code;
-- [Tom Lubowe](https://github.com/tlubowe) (Rigetti), for being my mentor, supporting the project, and raising issues with the QVM interaction;
+- [Tom Lubowe](https://github.com/tlubowe) (Rigetti), for being my mentor, supporting the project, and raising issues on the QVM interaction;
 - [Michał Stęchły](https://github.com/mstechly) (QOSF), for organizing the mentorship program and creating the inspiring QOSF community.
