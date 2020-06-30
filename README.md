@@ -138,11 +138,15 @@ Note: The `qvm` process can crash due to memory issues; if that happens, try to 
 	$ ./qvm -S -c`
 	```
 
+## QPU results
+
+Thanks to [Tom Lubowe](https://github.com/tlubowe), the `qpu_results` folder contains two copies of the notebook run on a **real QPU**, Rigetti's Aspen-8, using 100 shots and 1000 shots per optimization step. The 1000-shot notebook has incomplete results due to a timeout after about 250 steps; we plan to run it again soon.
+
 ## Acknowledgments
 
 Big thanks go to:
 
 - [Tom Bromley](https://github.com/trbromley) (Xanadu), for all the interesting discussions about PennyLane extensions, for guiding me through conventions and existing work, and for reviewing my code and notebook;
 - [Josh Izaac](https://github.com/josh146) (Xanadu), for putting me in touch with the PennyLane team, giving many useful suggestions, and for reviewing my code;
-- [Tom Lubowe](https://github.com/tlubowe) (Rigetti), for being my mentor, supporting the project, and raising issues on the QVM interaction;
+- [Tom Lubowe](https://github.com/tlubowe) (Rigetti), for being my mentor, supporting the project, raising issues on the QVM interaction, and managing to run the notebook on Rigetti's QPU;
 - [Michał Stęchły](https://github.com/mstechly) (QOSF), for organizing the mentorship program and creating the inspiring QOSF community.
